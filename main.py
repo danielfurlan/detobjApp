@@ -1,8 +1,3 @@
-!pip3 install flask
-!pip3 install werkzeug
-!pip3 install Pillow
-!pip3 install -U Werkzeug
-
 import flask
 from flask import Flask, jsonify, render_template
 
