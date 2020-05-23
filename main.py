@@ -1,3 +1,6 @@
+!pip3 install flask
+!pip3 install io
+
 import flask
 from flask import Flask, jsonify, render_template
 import flask
