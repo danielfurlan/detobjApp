@@ -17,7 +17,34 @@ app = Flask(__name__)
 @app.route('/')
 def hello():
     """Return a friendly HTTP greeting."""
-    return 'Hello World!'
+    #return 'Hello World!'
+
+
+    path = "/var/www/danielfurlan.com/immaggine/"
+    fileJPG = "AIimage.jpeg"
+    #filePng = "upsud.png"
+    
+    #new_im = Image.open(path+fileJPG)
+    if flask.request.method == "POST":
+        imageFile = flask.request.files['image']
+        Filename = werkzeug.utils.secure_filename(imageFile.filename)
+        print("\nReceived image file name : " + Filename)
+    
+    ### FACCIAMO QUALSIASI COSA CON L'IMMAGGINE E SALVIAMOLA NELLA SCATOLA "STATIC"
+        resp = ["./Processed/new_Im.jpg", 2]
+    
+        imageFile.save("./static/"+ Filename + "altered")
+    #url_path = "http://192.168.1.105:5000/static/"+ Filename + "altered"
+        url_path = "http://192.168.1.105:5000/static/banana1.jpgaltered"
+        
+        num_inst = resp[1]
+
+        js = {"num_inst":2, "image_url":url_path}
+    
+    #myfile = {'document':('imgBytes', open(imgBytes)),'datas':'json.dumps(js)'}
+    #return imgBytes
+        return js
+
 
 
 if __name__ == '__main__':
